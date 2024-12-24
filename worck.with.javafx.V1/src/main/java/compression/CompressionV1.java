@@ -8,7 +8,6 @@ import java.util.zip.CheckedOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
-
 public class CompressionV1 {
    private static String SOURCE_FILE = "/home/mo_na_ro_ra/Bureau/text_compfression/abc.jpg";
    private static String TARGET_FILE = "/home/mo_na_ro_ra/Bureau/mo.zip";
