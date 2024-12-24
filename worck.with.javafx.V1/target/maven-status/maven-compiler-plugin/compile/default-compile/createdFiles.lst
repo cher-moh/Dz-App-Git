@@ -1,0 +1,5 @@
+compression/lzw.class
+application/actions_fenetre.class
+compression/decompression.class
+compression/coder.class
+application/MainMaven.class
