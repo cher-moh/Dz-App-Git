@@ -21,11 +21,11 @@
         <artifactId>javafx-fxml</artifactId>
     </dependency>
     
-      <!--<dependency>
+      <dependency>
         <groupId>org.apache.tika</groupId>
-        <artifactId>tika-app</artifactId>
-        <version>1.16</version>
-    </dependency>-->
+        <artifactId>tika-core</artifactId>
+        <version>1.19.1</version>
+    </dependency>
 </dependencies>
 <build>
     <plugins>
