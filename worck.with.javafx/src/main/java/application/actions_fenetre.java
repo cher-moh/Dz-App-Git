@@ -79,7 +79,7 @@ public class actions_fenetre implements Initializable {
 			bfwriter.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+			// idtextfieldresultat.setText("ERROR !!!!!!!!");
 		}
 
 		idtextresultat.setText("Compression LZW Ended");
