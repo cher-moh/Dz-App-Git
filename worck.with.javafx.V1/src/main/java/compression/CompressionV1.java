@@ -30,7 +30,7 @@ public class CompressionV1 {
 		while ((length = fin.read(buffer)) > 0) {/************read file*****************/
 			zipout.write(buffer, 0, length);
 		}
-		zipout.closeEntry();/****************close all streaming opned ***************/
+		zipout.closeEntry();/****************close all streaming opned *****************/
 		zipout.finish();
 		fin.close();
 		zipout.close();
