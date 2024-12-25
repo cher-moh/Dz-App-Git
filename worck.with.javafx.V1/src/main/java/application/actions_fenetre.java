@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import compression.lzw;
-
+import compression.CompressionV1;
 
 public class actions_fenetre implements Initializable {
 	FileChooser filechooser = new FileChooser();
@@ -60,25 +60,10 @@ public class actions_fenetre implements Initializable {
 	@FXML
 	void compresser(ActionEvent event) {
 		try {
-			File monfichier = new File(recuptext.getText());/// le fichier à écrire
-			String str = "";
-			String i;
-			FileReader freader = new FileReader(monfichier);
-			BufferedReader bfreader = new BufferedReader(freader);
-			FileWriter fwriter = new FileWriter("/home/mohamed-lunix/Bureau/Compression.izap");
-			BufferedWriter bfwriter = new BufferedWriter(fwriter);
-			while ((i = bfreader.readLine()) != null) {
-				str += i;
-			}
-			String comp = compres.lzw_compress(str);
-			String AFF = "/" + monfichier.getName();
-			bfwriter.write(comp);
-			bfwriter.newLine();
-			bfwriter.write(AFF);
-			bfreader.close();
-			bfwriter.close();
-		} catch (Exception e) {
-			e.printStackTrace();
+			compression.CompressionV1 comp= new compression.CompressionV1();
+			comp.CompressedFile(recuptext.getText());
+			
+		} catch (Exception e) {			e.printStackTrace();
 			
 		}
 
