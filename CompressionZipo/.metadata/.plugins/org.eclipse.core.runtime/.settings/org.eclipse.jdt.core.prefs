@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=*.launch
+org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=22
+org.eclipse.jdt.core.compiler.compliance=22
+org.eclipse.jdt.core.compiler.release=enabled
+org.eclipse.jdt.core.compiler.source=22
+org.eclipse.jdt.core.userLibrary.javafx=<?xml version\="1.0" encoding\="UTF-8"?>\n<userlibrary systemlibrary\="false" version\="2">\n\t<archive path\="/media/mohamed-lunix/home/JavaFx/lib/javafx.base.jar"/>\n\t<archive path\="/media/mohamed-lunix/home/JavaFx/lib/javafx.controls.jar"/>\n\t<archive path\="/media/mohamed-lunix/home/JavaFx/lib/javafx.fxml.jar"/>\n\t<archive path\="/media/mohamed-lunix/home/JavaFx/lib/javafx.graphics.jar"/>\n\t<archive path\="/media/mohamed-lunix/home/JavaFx/lib/javafx.media.jar"/>\n\t<archive path\="/media/mohamed-lunix/home/JavaFx/lib/javafx.swing.jar"/>\n\t<archive path\="/media/mohamed-lunix/home/JavaFx/lib/javafx.web.jar"/>\n\t<archive path\="/media/mohamed-lunix/home/JavaFx/lib/javafx-swt.jar"/>\n</userlibrary>\n

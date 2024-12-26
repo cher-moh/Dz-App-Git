@@ -52,7 +52,7 @@ public class CompressionV1 {
 		}catch (IOException ioex) {
 			
 		}
-		System.out.print("ok 2 eme partie");
+	
 
 
 	}
