@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="all" maxHeight="-Infinity" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.actions_fenetre">
+   <children>
+      <Pane fx:id="a1" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <MenuBar prefHeight="27.0" prefWidth="600.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Fichier">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Ouvrir" />
+                        <MenuItem mnemonicParsing="false" text="Sauvgarde" />
+                   	    <MenuItem mnemonicParsing="false" onAction="#exit" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Editer">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <SplitPane layoutX="1.0" layoutY="29.0" orientation="VERTICAL" prefHeight="368.0" prefWidth="600.0" style="visibility: 0;">
+              <items>
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Compression">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="96.0" prefWidth="598.0">
+                                       <children>
+                                          <Button fx:id="charger1" layoutX="461.0" layoutY="19.0" mnemonicParsing="false" onAction="#choix1" text="« Qui » le fichier" />
+                                          <TextField fx:id="recuptext1" layoutX="21.0" layoutY="19.0" prefHeight="26.0" prefWidth="431.0" />
+                                          <TextField fx:id="recuptext11" layoutX="21.0" layoutY="53.0" prefHeight="26.0" prefWidth="431.0" />
+                                          <Button fx:id="charger11" layoutX="461.0" layoutY="53.0" mnemonicParsing="false" onAction="#ousortie1" prefWidth="116.0" text="« où » la sortie" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Button layoutX="534.0" layoutY="306.0" mnemonicParsing="false" onAction="#close" text="Close" />
+                                    <TextArea fx:id="idtextresultat1" layoutX="22.0" layoutY="127.0" prefHeight="169.0" prefWidth="521.0" />
+                                    <Button layoutX="50.0" layoutY="92.0" mnemonicParsing="false" onAction="#compresser" prefHeight="26.0" prefWidth="383.0" text="Compresser" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Extraction">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="96.0" prefWidth="598.0">
+                                       <children>
+                                          <Button fx:id="charger2" layoutX="461.0" layoutY="19.0" mnemonicParsing="false" onAction="#choix2" prefWidth="116.0" text="« Qui » le fichier" textAlignment="CENTER" />
+                                          <TextField fx:id="recuptext2" layoutX="21.0" layoutY="19.0" prefHeight="26.0" prefWidth="431.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Button layoutX="534.0" layoutY="306.0" mnemonicParsing="false" onAction="#close" text="Close" />
+                                    <TextArea fx:id="idtextresultat2" layoutX="22.0" layoutY="127.0" prefHeight="169.0" prefWidth="521.0" />
+                                    <Button layoutX="50.0" layoutY="92.0" mnemonicParsing="false" onAction="#Ectracter" prefHeight="26.0" prefWidth="383.0" text="Extracter" />
+                                    <TextField fx:id="recuptext12" layoutX="21.0" layoutY="53.0" prefHeight="26.0" prefWidth="431.0" />
+                                    <Button fx:id="charger111" layoutX="461.0" layoutY="53.0" mnemonicParsing="false" onAction="#ousortie2" prefWidth="116.0" text="« où » la sortie" textAlignment="CENTER" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                     <effect>
+                        <Glow level="0.1" />
+                     </effect>
+                  </TabPane>
+              </items>
+            </SplitPane>
+         </children>
+         <effect>
+            <Blend mode="SOFT_LIGHT" />
+         </effect>
+      </Pane>
+   </children>
+</StackPane>
