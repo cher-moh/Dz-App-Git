@@ -47,21 +47,7 @@ public class CompressionV1 {
 	
 	}
 	
-	public double taille_file(String compfile,String directory)  {
-		double taille_compression=0;
-		
-		File fichiersS=new File(compfile);
-		 if(fichiersS.exists()){
-			String name=fichiersS.getName().substring(0, fichiersS.getName().indexOf("."));
-			String fileandchemin=directory+"/"+name+".mzip";
-			double taill=0;
-			taill=coder.taille_file(fileandchemin, "mo");	
-			taille_compression=taill;
-		}else{  System.out.println("Fichier innexistant"); 
-		}	
-		return taille_compression;
-		
-	}
+
 
 	
 }

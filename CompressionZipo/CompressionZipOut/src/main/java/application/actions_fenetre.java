@@ -96,14 +96,17 @@ public class actions_fenetre implements Initializable {
 	
 		try {
 			CompressionV1 comp = new CompressionV1();
+			coder co =new coder();
 			comp.CompressedFile(recuptext1.getText(),recuptext11.getText());
-			taille=coder.taille_file(recuptext1.getText(), "mo");
-			double taux=0;
-			
-			taux=(1-((comp.taille_file(recuptext1.getText(), recuptext11.getText()))/taille))*100;
-			idtextresultat1.setText("Compression termniée ..."+"\n"+"\n"+"-Chemin de votre Fichier : "+recuptext1.getText()+ "\n"+"-Compresser dans le Répertoire : "+recuptext11.getText()+"\n"+"-La taille de fichier avant l'opération en MégaOct est : "+dtaille.format(taille)+" Méga-oct"+"\n"+"-le nouveau taille du fichier est: "+comp.taille_file(recuptext1.getText(), recuptext11.getText()) +"\n"+"-le Taux de Compression est :"+taux+"%");
-			idtextresultat1.setWrapText(true);
-			
+			taille=coder.taille_file(recuptext1.getText(), "mo");//fichier initiale
+			double taille_ap_com=co.taille_file_com(recuptext1.getText(), recuptext11.getText());
+			int taux_com=co.tauxComp("Comp", recuptext1.getText(), recuptext11.getText());
+			idtextresultat1.setText("Compression termniée ..."+"\n"+"\n"+"-Chemin de votre Fichier : "+
+			recuptext1.getText()+ "\n"+"-Compresser dans le Répertoire : "+recuptext11.getText()+"\n"+
+			"-La taille de fichier avant l'opération en MégaOct est : "+dtaille.format(taille)+
+			" Méga-oct"+"\n"+"-le nouveau taille du fichier est: "+
+			taille_ap_com +	"\n"+"-le Taux de Compression est :"+taux_com+"%");
+			idtextresultat1.setWrapText(true);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		
@@ -116,10 +119,16 @@ public class actions_fenetre implements Initializable {
 	void Ectracter(ActionEvent event) throws IOException {
 		try {
 			decompressionV1 comp = new decompressionV1();
+			coder co =new coder();
 			comp.DecompressionFile(recuptext2.getText(),recuptext12.getText());
-			taille=coder.taille_file(recuptext1.getText(), "mo");	
-			idtextresultat2.setText("Chemin de votre Fichier : "+recuptext2.getText()+ "\n"+
-			" est Extracter dans le Répertoire : "+recuptext12.getText() + "\n"+"\n"+"La taille de fichier en MégaOct est : "+dtaille.format(taille)+" Mégaoct");
+			taille=coder.taille_file(recuptext2.getText(), "mo");	/* le fichier zip*/
+			double tailleap=co.tailleavantcomp(recuptext2.getText());	/* le fichier apres la compression zip*/
+			int taux_ext=co.tauxComp("Ext", recuptext2.getText(), recuptext12.getText());
+			idtextresultat2.setText("-Chemin de votre Fichier : "+recuptext2.getText()+ "\n"+
+			"-Extracter dans le Répertoire : "+recuptext12.getText() 
+			+ "\n"+"-La taille de fichier mzip en MégaOct est : "+dtaille.format(taille)+" Mégaoct"+
+			"\n"+"- La taille de fichier apres extraction est :"+tailleap+"mo"+
+			"\n"+"- Le Taux de l'extration est de :"+taux_ext+"%");
 			idtextresultat2.setWrapText(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -176,7 +185,9 @@ public class actions_fenetre implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		filechooser.getExtensionFilters().addAll(new ExtensionFilter("IZAP Files", "*.izap"),
-				new ExtensionFilter("Text Files", "*.txt"), new ExtensionFilter("All Files", "*.*"));
+		filechooser.getExtensionFilters().addAll(
+				new ExtensionFilter("All Files", "*.*"),
+				new ExtensionFilter("Text Files", "*.txt"), 
+				new ExtensionFilter("Mzip Files", "*.mzip"));
 	}
 }

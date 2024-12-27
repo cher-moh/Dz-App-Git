@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
 
 <StackPane fx:id="all" maxHeight="-Infinity" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.actions_fenetre">
    <children>
@@ -78,6 +79,8 @@
                                     <Button layoutX="50.0" layoutY="92.0" mnemonicParsing="false" onAction="#Ectracter" prefHeight="26.0" prefWidth="383.0" text="Extracter" />
                                     <TextField fx:id="recuptext12" layoutX="21.0" layoutY="53.0" prefHeight="26.0" prefWidth="431.0" />
                                     <Button fx:id="charger111" layoutX="461.0" layoutY="53.0" mnemonicParsing="false" onAction="#ousortie2" prefWidth="116.0" text="« où » la sortie" textAlignment="CENTER" />
+                                    <Text layoutX="17.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de la donnée (les cas &lt; 100%) ou la précision de l'taille du fichier initiale (cas &gt;100%) " textAlignment="JUSTIFY" wrappingWidth="1052.2587890625" />
+                                    <Text layoutX="9.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le taux de l'extraction logiquement est de 100% mais dans notre cas dépond de la perte " textAlignment="JUSTIFY" wrappingWidth="1052.2587890625" />
                                  </children>
                               </AnchorPane>
                         </content>
