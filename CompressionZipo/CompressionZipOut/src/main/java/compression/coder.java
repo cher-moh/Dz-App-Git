@@ -2,19 +2,20 @@ package compression;
 
 import java.io.*;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class coder {
+	
 	public static byte[] createChecksum(String filename) throws Exception {
 		InputStream fis = new FileInputStream(filename);
-
 		byte[] buffer = new byte[1024];
 		MessageDigest complete = MessageDigest.getInstance("MD5");
 		int numRead;
-
 		do {
 			numRead = fis.read(buffer);
 			if (numRead > 0) {
@@ -25,7 +26,6 @@ public class coder {
 		fis.close();
 		return complete.digest();
 	}
-
 	public static String getMD5Checksum(String filename) throws Exception {
 		byte[] b = createChecksum(filename);
 		String result = "";
@@ -35,22 +35,18 @@ public class coder {
 		}
 		return result;
 	}
-
 	public static double taille_file(String fichier, String mesure) {
 
 		File file = new File(fichier);
 		String[] mes_rest = { "bit", "oct", "ko", "mo", "go", "to" };
 		double resultats = 0;
-
 		if (file.exists()) {
-
 			double bytes = file.length();
 			double bits = bytes * 8;
-			double kilobytes = bytes / 1024;
-			double megabytes = kilobytes / 1024;
-			double gigabytes = megabytes / 1024;
-			double terabytes = gigabytes / 1024;
-
+			double kilobytes = bytes / 1000;
+			double megabytes = kilobytes / 1000;
+			double gigabytes = megabytes / 1000;
+			double terabytes = gigabytes / 1000;
 			switch (mesure) {
 			case "bit":
 				resultats = bytes;
@@ -116,10 +112,10 @@ public class coder {
 				long compressedSize = ze.getCompressedSize();
 				double tailleAV = (double) uncompressedSize;
 				reultats = (tailleAV / 1000) / 1000;
-				System.out.println(name);
-				System.out.println(lastModified);
-				System.out.println(uncompressedSize);
-				System.out.println(compressedSize);
+				//System.out.println(name);
+				//System.out.println(lastModified);
+				//System.out.println(uncompressedSize);
+				//System.out.println(compressedSize);
 
 			}
 		} catch (IOException ex) {
@@ -127,7 +123,30 @@ public class coder {
 		}
 		return reultats;
 	}
+	public static List <Object>  contenuzip(String selectedFile) {
+		List<Object> contenu = new ArrayList <Object>();
+		try {
+			ZipFile zf = new ZipFile(selectedFile);
+			Enumeration e = zf.entries();
+			while (e.hasMoreElements()) {
+				ZipEntry ze = (ZipEntry) e.nextElement();
+				String name = ze.getName();
+				Date lastModified = new Date(ze.getTime());
+				long uncompressedSize = ze.getSize();
+				long compressedSize = ze.getCompressedSize();
+				contenu.add(name);
+				contenu.add(lastModified);
+				contenu.add((double)compressedSize);
+				contenu.add((double)uncompressedSize);
 
+			}
+		} catch (IOException ex) {
+			System.err.println(ex);
+		}
+		return contenu;
+		
+		
+	}
 	public int tauxComp(String Tcom, String selectedfile, String Directory) {
 		int r_taux=0;
 			
@@ -140,16 +159,20 @@ public class coder {
 			break;
 			}
 		case "Ext":{
+			try {
+			String nomzip=(String) contenuzip(selectedfile).get(0);			
+			String chemin_ext=Directory+"/"+nomzip;
 			double taille_file_ap_extraction = tailleavantcomp(selectedfile);
-			double taille_file_av_com = taille_file(selectedfile, "mo");
-			int taux = (int) (( (taille_file_ap_extraction /taille_file_av_com )) * 100);
+			double taille_file_av_com = taille_file(chemin_ext, "mo");
+			int taux = (int) (( ( taille_file_av_com / taille_file_ap_extraction)) * 100);
 			r_taux=taux;
 			break;
-			
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 		}
-
 		}
-
 		return r_taux;
 	}
 

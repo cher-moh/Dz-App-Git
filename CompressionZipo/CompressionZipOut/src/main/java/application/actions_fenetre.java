@@ -6,6 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
@@ -13,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -46,8 +50,7 @@ public class actions_fenetre implements Initializable {
 	@FXML
 	private Button charger2;
 	@FXML
-	private TextArea idtextresultat1;
-	 
+	private TextArea idtextresultat1; 
 	@FXML
 	private TextArea idtextresultat2;
 	@FXML
@@ -58,27 +61,33 @@ public class actions_fenetre implements Initializable {
 	private TextField recuptext12;
 	@FXML
 	private TextField recuptext2;
-
+    @FXML
+    public ProgressBar idprogress1;
+    @FXML
+    public ProgressBar idprogress2;
 	/*********************************************
 	 * les actions sur la fenetre
 	 *********************************************/
 	FileChooser filechooser = new FileChooser();
+	
 	lzw compres = new lzw();
 	DirectoryChooser directo=new DirectoryChooser();
 	double taille=0;
 	DecimalFormat dtaille = new DecimalFormat("##.##");
-	public File selectedFile() {
-		File selected=null;
-	
+	public String selectedFile(){
+		String Files_names="";
+		int i=0;
+		List<File> selected=new ArrayList<File>();
 		try {
 		Stage win = new Stage();
-		File selectedFile = filechooser.showOpenDialog(win);	
-		selected=	selectedFile;
-	
-		
-		 }
+		List<File> selectedFile = filechooser.showOpenMultipleDialog(win);	
+			Iterator<File> it=selectedFile.iterator();			
+			while (it.hasNext()) {
+				Files_names+=it.next().getAbsolutePath()+";";				
+			}
+		 }	
 		catch (Exception e) {System.out.print("No File Selected !!");}
-		return selected;
+		return Files_names;
 	}
 	public File selectedDirect() {
 		File selected=null;
@@ -93,19 +102,28 @@ public class actions_fenetre implements Initializable {
 
 	@FXML
 	void compresser(ActionEvent event) {
-	
+		String Etat="false";
+		double i=0.1;
 		try {
+		
+			
+			
 			CompressionV1 comp = new CompressionV1();
 			coder co =new coder();
-			comp.CompressedFile(recuptext1.getText(),recuptext11.getText());
-			taille=coder.taille_file(recuptext1.getText(), "mo");//fichier initiale
+			taille=coder.taille_file(recuptext1.getText(), "mo");
+			long startTime = System.currentTimeMillis()/1000;
+		comp.CompressedFile(recuptext1.getText(),recuptext11.getText());	
+			long endTime = System.currentTimeMillis()/1000;
+			long time_comp=endTime-startTime;
+			
 			double taille_ap_com=co.taille_file_com(recuptext1.getText(), recuptext11.getText());
 			int taux_com=co.tauxComp("Comp", recuptext1.getText(), recuptext11.getText());
 			idtextresultat1.setText("Compression termniée ..."+"\n"+"\n"+"-Chemin de votre Fichier : "+
 			recuptext1.getText()+ "\n"+"-Compresser dans le Répertoire : "+recuptext11.getText()+"\n"+
 			"-La taille de fichier avant l'opération en MégaOct est : "+dtaille.format(taille)+
 			" Méga-oct"+"\n"+"-le nouveau taille du fichier est: "+
-			taille_ap_com +	"\n"+"-le Taux de Compression est :"+taux_com+"%");
+			taille_ap_com +	"\n"+"-le Taux de Compression est :"+taux_com+"%"+
+			"\n"+"le temps écouler dans la compression est : "+time_comp+" seconde");
 			idtextresultat1.setWrapText(true);			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,15 +138,19 @@ public class actions_fenetre implements Initializable {
 		try {
 			decompressionV1 comp = new decompressionV1();
 			coder co =new coder();
+			 long startTime = System.currentTimeMillis()/1000;
 			comp.DecompressionFile(recuptext2.getText(),recuptext12.getText());
+			  long endTime = System.currentTimeMillis()/1000;
+			  long time_comp=endTime-startTime;
 			taille=coder.taille_file(recuptext2.getText(), "mo");	/* le fichier zip*/
 			double tailleap=co.tailleavantcomp(recuptext2.getText());	/* le fichier apres la compression zip*/
 			int taux_ext=co.tauxComp("Ext", recuptext2.getText(), recuptext12.getText());
 			idtextresultat2.setText("-Chemin de votre Fichier : "+recuptext2.getText()+ "\n"+
 			"-Extracter dans le Répertoire : "+recuptext12.getText() 
 			+ "\n"+"-La taille de fichier mzip en MégaOct est : "+dtaille.format(taille)+" Mégaoct"+
-			"\n"+"- La taille de fichier apres extraction est :"+tailleap+"mo"+
-			"\n"+"- Le Taux de l'extration est de :"+taux_ext+"%");
+			"\n"+"-La taille de fichier apres extraction est :"+tailleap+"mo"+
+			"\n"+"-Le Taux de l'extration est de :"+taux_ext+"%"+
+			"\n"+"-le Temps Ecouler dans l'extraction est : "+time_comp+" seconde");
 			idtextresultat2.setWrapText(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -149,8 +171,9 @@ public class actions_fenetre implements Initializable {
 	@FXML
 	void choix1(ActionEvent event) {
 
-		try {			
-		recuptext1.setText(selectedFile().getAbsolutePath());
+		try {
+		
+		recuptext1.setText(selectedFile());
 		idtextresultat1.setWrapText(true);
 	
 		}catch (Exception e) {System.out.print("No File Selected !!");}
@@ -159,7 +182,7 @@ public class actions_fenetre implements Initializable {
 	void choix2(ActionEvent event) {
 		
 	try {
-		recuptext2.setText(selectedFile().getAbsolutePath());
+		recuptext2.setText(selectedFile());
 		
 		idtextresultat2.setWrapText(true);
 	}	catch (Exception e) {System.out.print("No File Selected !!");}
@@ -182,6 +205,8 @@ public class actions_fenetre implements Initializable {
 			
 		}	catch (Exception e) {System.out.print("No Directory Selected !!");}
 	}
+
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
