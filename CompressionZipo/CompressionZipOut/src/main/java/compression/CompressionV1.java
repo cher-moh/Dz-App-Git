@@ -8,7 +8,7 @@ import javafx.scene.control.ProgressBar;
 
 public class CompressionV1 {
 
-	public void CompressedFile(String Files, String Directory) {
+	public List<String>  CompressedFile(String Files, String Directory) {
 		char[] str = new char[Files.length()];
 		String[] chemin = new String[20];
 		List<String> selectedF = new ArrayList<String>();
@@ -25,9 +25,7 @@ public class CompressionV1 {
 				s="";
 			}				
 		}
-		 voir_resultas_write vr = new voir_resultas_write(selectedF);
-		 vr.start();	
-
+		return selectedF;
 	}
 	 void progress(ProgressBar p) {
 		double i=p.getProgress();

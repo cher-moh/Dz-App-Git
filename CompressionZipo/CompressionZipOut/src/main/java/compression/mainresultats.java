@@ -10,7 +10,7 @@ public class mainresultats {
 		selectedF.add("/home/mohamed-lunix/Images/1.png");
 		selectedF.add("/home/mohamed-lunix/Images/2.png");
 		
-		voir_resultas_write vr 	= new voir_resultas_write(selectedF);
+		ThreadsCompression vr 	= new ThreadsCompression(selectedF);
 		vr.start();
 
 	}
