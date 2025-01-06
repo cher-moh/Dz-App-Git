@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;worck.with.javafx/src/main/java/application&apos;&#x0A;- Original project: &apos;Dz-App-Git&apos;&#x0A;- Destination element: &apos;worck.with.javafx/src/main/java/application&apos;&#x0A;- Original elements:&#x0A;     fenetre.fxml&#x0A;     actions_fenetre.java" description="Copy files" destination="=worck.with.javafx/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;application" element1="worck.with.javafx/src/main/java/application/fenetre.fxml" element2="worck.with.javafx/src/main/java/application/actions_fenetre.java" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1735198419886" units="0" version="1.0"/>
+</session>
