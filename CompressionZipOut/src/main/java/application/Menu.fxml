@@ -30,18 +30,16 @@
                                  <children>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="96.0" prefWidth="598.0">
                                        <children>
-                                          <Button fx:id="charger1" layoutX="461.0" layoutY="19.0" mnemonicParsing="false" onAction="#choix1" prefHeight="26.0" prefWidth="54.0" text="Files" />
                                           <TextField fx:id="recuptext1" layoutX="21.0" layoutY="19.0" prefHeight="26.0" prefWidth="431.0" />
                                           <TextField fx:id="recuptext11" layoutX="21.0" layoutY="53.0" prefHeight="26.0" prefWidth="431.0" />
                                           <Button fx:id="charger11" layoutX="462.0" layoutY="53.0" mnemonicParsing="false" onAction="#ousortie1" prefHeight="26.0" prefWidth="118.0" text="Zip Directory" />
-                                          <Button fx:id="IdFolder" layoutX="518.0" layoutY="19.0" mnemonicParsing="false" onAction="#choixDirec" prefHeight="26.0" prefWidth="60.0" text="Folder" />
+                                          <Button fx:id="IdFolder" layoutX="461.0" layoutY="19.0" mnemonicParsing="false" onAction="#choixDirec" prefHeight="26.0" prefWidth="118.0" text="Folder/files" />
                                        </children>
                                     </AnchorPane>
-                                    <Button layoutX="534.0" layoutY="306.0" mnemonicParsing="false" onAction="#close" text="Close" />
+                                    <Button layoutX="536.0" layoutY="334.0" mnemonicParsing="false" onAction="#close" prefHeight="33.0" prefWidth="60.0" text="Close" />
                                     <TextArea fx:id="idtextresultat1" layoutX="22.0" layoutY="127.0" prefHeight="169.0" prefWidth="504.0" />
-                                    <Button layoutX="23.0" layoutY="92.0" mnemonicParsing="false" onAction="#compresser" prefHeight="26.0" prefWidth="213.0" text="Mzip Files" />
                                     <ProgressBar fx:id="idprogress1" layoutX="24.0" layoutY="308.0" prefHeight="20.0" prefWidth="502.0" progress="0.0" />
-                                    <Button layoutX="238.0" layoutY="92.0" mnemonicParsing="false" onAction="#CompresserFolder" prefHeight="26.0" prefWidth="213.0" text="Mzip Folder" />
+                                    <Button layoutX="24.0" layoutY="92.0" mnemonicParsing="false" onAction="#CompresserFolder" prefHeight="26.0" prefWidth="427.0" text="Mzip Compression" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -52,15 +50,15 @@
                                  <children>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="96.0" prefWidth="598.0">
                                        <children>
-                                          <Button fx:id="charger2" layoutX="461.0" layoutY="19.0" mnemonicParsing="false" onAction="#choix2" prefWidth="116.0" text="Zip File" textAlignment="CENTER" />
+                                          <Button fx:id="charger2" layoutX="461.0" layoutY="19.0" mnemonicParsing="false" onAction="#choix2" prefHeight="26.0" prefWidth="118.0" text="Zip File" textAlignment="CENTER" />
                                           <TextField fx:id="recuptext2" layoutX="21.0" layoutY="19.0" prefHeight="26.0" prefWidth="431.0" />
+                                          <Button fx:id="charger111" layoutX="461.0" layoutY="53.0" mnemonicParsing="false" onAction="#ousortie2" prefHeight="26.0" prefWidth="118.0" text="Folder Extraction" textAlignment="CENTER" />
                                        </children>
                                     </AnchorPane>
-                                    <Button layoutX="534.0" layoutY="306.0" mnemonicParsing="false" onAction="#close" text="Close" />
+                                    <Button layoutX="536.0" layoutY="334.0" mnemonicParsing="false" onAction="#close" prefHeight="33.0" prefWidth="60.0" text="Close" />
                                     <TextArea fx:id="idtextresultat2" layoutX="22.0" layoutY="127.0" prefHeight="169.0" prefWidth="521.0" />
-                                    <Button layoutX="50.0" layoutY="92.0" mnemonicParsing="false" onAction="#Ectracter" prefHeight="26.0" prefWidth="383.0" text="Extracter" />
+                                    <Button layoutX="24.0" layoutY="92.0" mnemonicParsing="false" onAction="#Ectracter" prefHeight="26.0" prefWidth="427.0" text="Extracter" />
                                     <TextField fx:id="recuptext12" layoutX="21.0" layoutY="53.0" prefHeight="26.0" prefWidth="431.0" />
-                                    <Button fx:id="charger111" layoutX="461.0" layoutY="53.0" mnemonicParsing="false" onAction="#ousortie2" prefWidth="116.0" text="Folder Extraction" textAlignment="CENTER" />
                                     <ProgressBar fx:id="idprogress2" layoutX="24.0" layoutY="308.0" prefHeight="20.0" prefWidth="510.0" progress="0.0" />
                                  </children>
                               </AnchorPane>

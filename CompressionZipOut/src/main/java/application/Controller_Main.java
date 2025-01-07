@@ -95,39 +95,6 @@ public class Controller_Main implements Initializable {
 	}
 
 	@FXML
-	void compresser(ActionEvent event) throws Throwable {
-		String Etat = "false";
-		double i = 0.1;
-		try {
-			/**************************************************************************************************/
-			FilesStringToListFiles comp = new FilesStringToListFiles();
-			List<String> liste_files = comp.CompressedFile(recuptext1.getText());
-			ThreadsCompression vr = new ThreadsCompression(liste_files, recuptext11.getText(),null);
-			/**************************************************************************************************/		
-			vr.compression(vr.EtatG(true));
-		    /**************************************************************************************************/
-		while (vr.EtatG(true)&& i<=1.0) {
-			idprogress1.setProgress(i);
-			i=i+0.1;
-		}
-			coder co = new coder();
-			taille = coder.taille_file(recuptext1.getText(), "mo");
-			double taille_ap_com = co.taille_file_com(recuptext1.getText(), recuptext11.getText());
-		//	int taux_com = co.tauxComp("Comp", recuptext1.getText(), recuptext11.getText());
-			idtextresultat1.setText("Compression termniée ..." + "\n" + "\n" + "-Chemin de votre Fichier : "
-					+ recuptext1.getText() + "\n" + "-Compresser dans le Répertoire : " + recuptext11.getText() + "\n"
-					+ "-La taille de fichier avant l'opération en MégaOct est : " + dtaille.format(taille) + " Méga-oct"
-					+ "\n" + "-le nouveau taille du fichier est: " + taille_ap_com + "\n"
-					+ "-le Taux de Compression est :" + "taux" + "%" + "\n"
-					+ "le temps écouler dans la compression est : " + vr.dureecompression() + " seconde");
-			idtextresultat1.setWrapText(true);
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@FXML
 	void Ectracter(ActionEvent event) throws IOException {
 		try {
 			String chemin1=recuptext2.getText();
@@ -148,21 +115,6 @@ public class Controller_Main implements Initializable {
 	void close(ActionEvent event) {
 		System.exit(0);
 	}
-
-	@FXML
-	void choix1(ActionEvent event) {
-
-		try {
-
-			recuptext1.setText(selectedFile());
-			
-			idtextresultat1.setWrapText(true);
-
-		} catch (Exception e) {
-			System.out.print("No File Selected !!");
-		}
-	}
-
 	@FXML
 	void choix2(ActionEvent event) {
 
@@ -175,7 +127,6 @@ public class Controller_Main implements Initializable {
 		} catch (Exception e) {
 			System.out.print("No File Selected !!");
 		}
-
 	}
 
 	@FXML
@@ -199,8 +150,6 @@ public class Controller_Main implements Initializable {
 			System.out.print("No Directory Selected !!");
 		}
 	}
-	
-	
 	   @FXML
 	    void choixDirec(ActionEvent event) {
 			try {
@@ -215,18 +164,17 @@ public class Controller_Main implements Initializable {
 		   String foldertozip=recuptext1.getText();
 		   return foldertozip;
 	   }
-	   
-
 	    @FXML
-	    void CompresserFolder(ActionEvent event) {			
+	    void CompresserFolder(ActionEvent event) throws Throwable {			
 				ThreadsCompression vr = new ThreadsCompression(null,recuptext11.getText(),foldertozip() );
-				vr.CompressionFolder(true);
+				vr.compression();
 				double i=0.1;
 				while (vr.EtatG(true)&& i<=1.0) {
 					idprogress1.setProgress(i);
 					i=i+0.1;
 				}
 				idtextresultat1.setText("Compression Folder Termniée ..." );
+				idtextresultat1.setWrapText(true);
 	    }
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

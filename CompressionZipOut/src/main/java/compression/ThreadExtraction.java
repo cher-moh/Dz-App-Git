@@ -28,24 +28,25 @@ public class ThreadExtraction {
 			try {
 				File fichierS = new File(chemin);
 				String name = fichierS.getName().substring(0, fichierS.getName().indexOf("."));
-				File fosfolder = new File(cheminFolder + "/" + name);
-				fosfolder.mkdir();
+				File fosfolderfile = new File(cheminFolder + "/" + name);
+				fosfolderfile.mkdir();
 				ZipInputStream zipin = new ZipInputStream(new FileInputStream(fichierS.getAbsolutePath()));
 				ZipEntry ze;
 				while ((ze = new ZipEntry(zipin.getNextEntry())) != null) {				
-					String namezip = ze.getName();
-					FileOutputStream fos = new FileOutputStream(cheminFolder + "/" + name + "/" + namezip);
+					File f=new File(ze.getName());
+					String namezip = f.getName();		
+						FileOutputStream fosfile = new FileOutputStream(cheminFolder + "/" + name + "/" + namezip);
 					int length;
 					byte[] buffer = new byte[2024];
 					while ((length = zipin.read(buffer)) > 0) {
-						fos.write(buffer, 0, length);
-					}
-					fos.close();				
-				}
-				zipin.closeEntry();
-				zipin.close();
+						fosfile.write(buffer, 0, length);
+					}					
+					fosfile.close();
+				}	
 				
-			
+				
+				zipin.closeEntry();
+				zipin.close();			
 			} catch (IOException ioex) {
 				System.out.println("Error in Extraction...");
 			}
