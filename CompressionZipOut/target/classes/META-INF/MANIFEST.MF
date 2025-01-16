@@ -1,4 +1,12 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 23
+Built-By: mohamed-lunix
+Build-Jdk: 23.0.1
+Implementation-Title: worck.with.javafx
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: dz.app.javafx
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/worck.with.jav
+ afx/
+Main-Class: application.MainMavenZIP
 Created-By: Maven Integration for Eclipse
 

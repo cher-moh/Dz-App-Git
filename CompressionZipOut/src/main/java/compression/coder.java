@@ -174,5 +174,31 @@ public class coder {
 		}
 		return r_taux;
 	}
+	
+	
 
+	 public  double folderSize(File folder){
+	    double size = 0;
+	    File[] fileList = folder.listFiles();	
+	    for(File file : fileList){
+	        if(!file.isFile()){ 
+	            folderSize(file);
+	        }
+	        size += file.length();
+	    }
+	    System.out.println("taile=="+size);
+	    return size;
+	}
+	 public  int nbr(File folder){
+		    int size = 0;
+		    File[] fileList = folder.listFiles();	
+		    for(File file : fileList){
+		        if(!file.isFile()){ 
+		            folderSize(file);
+		        }
+		        size = size+1;
+		    }
+		    System.out.println("nbr file=="+size);
+		    return size;
+		}
 }

@@ -3,14 +3,19 @@
   <groupId>dz.app.javafx</groupId>
   <artifactId>worck.with.javafx</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>application.maven</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <javafx.version>17.0.1</javafx.version>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+     <javafx.version>21</javafx.version>
+      <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>    
+ 	 <start-class>application.MainMavenZIP</start-class>
 </properties>
-
+   <parent>
+  				  <groupId>org.springframework.boot</groupId>
+   				 <artifactId>spring-boot-starter-parent</artifactId>
+   				 <version>1.5.9.RELEASE</version>
+				</parent>
 <dependencies>
     <dependency>
         <groupId>org.openjfx</groupId>
@@ -20,28 +25,58 @@
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-fxml</artifactId>
     </dependency>
+    <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-media</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+</dependency>
+	<dependency>
+		<groupId>mavenjavafx</groupId>
+		<artifactId>testjavafx</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
 </dependencies>
+
 <build>
     <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version>
-        </plugin>
-        <plugin>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-maven-plugin</artifactId>
-            <version>0.0.8</version>
-            <configuration>
-                <mainClass>com.tensorApplications.billingWizard.Main</mainClass>
-            </configuration>
-        </plugin>
+  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.1</version>
+         </plugin>
+    <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>21</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>application.MainMavenZIP</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+             
+
+            </plugin>
     </plugins>
 </build>
-  
-  
-  
-  
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -53,6 +88,21 @@
 				<groupId>org.openjfx</groupId>
 				<artifactId>javafx-controls</artifactId>
 				<version>${javafx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.13.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-media</artifactId>
+				<version>23.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

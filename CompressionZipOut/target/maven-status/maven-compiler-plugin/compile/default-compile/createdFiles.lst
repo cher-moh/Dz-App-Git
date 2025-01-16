@@ -1,5 +1,8 @@
-compression/lzw.class
-application/actions_fenetre.class
-compression/decompression.class
+compression/ThreadsCompression.class
+application/ControllerProgress.class
+compression/ThreadExtraction.class
+compression/ThreadProgressBar.class
 compression/coder.class
-application/MainMaven.class
+application/MainMavenZIP.class
+compression/FilesStringToListFiles.class
+application/Controller_Main.class
