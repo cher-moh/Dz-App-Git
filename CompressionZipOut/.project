@@ -3,6 +3,8 @@
 	<name>CompressionZipOut</name>
 	<comment></comment>
 	<projects>
+		<project>Dz-App-Git</project>
+		<project>worck.with.javafx</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
