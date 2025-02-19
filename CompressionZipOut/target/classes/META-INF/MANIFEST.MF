@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Built-By: mohamed-lunix
-Build-Jdk: 23.0.1
+Built-By: mohamed
+Build-Jdk: 21.0.5
 Implementation-Title: worck.with.javafx
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: dz.app.javafx

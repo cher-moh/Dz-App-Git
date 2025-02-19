@@ -1,8 +1,0 @@
-compression/ThreadsCompression.class
-application/ControllerProgress.class
-compression/ThreadExtraction.class
-compression/ThreadProgressBar.class
-compression/coder.class
-application/MainMavenZIP.class
-compression/FilesStringToListFiles.class
-application/Controller_Main.class

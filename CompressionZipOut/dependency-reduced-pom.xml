@@ -74,12 +74,6 @@
       <version>3.0.2</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>mavenjavafx</groupId>
-      <artifactId>testjavafx</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
   <dependencyManagement>
     <dependencies>
